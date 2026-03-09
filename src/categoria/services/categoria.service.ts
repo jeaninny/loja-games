@@ -1,8 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { ILike, Repository } from "typeorm";
+import { DeleteResult, ILike, Repository } from "typeorm";
 import { Categoria } from "../entities/categoria.entity";
-import { DeleteResult } from "typeorm/browser";
 
 @Injectable()
 export class CategoriaService {
@@ -70,8 +69,10 @@ export class CategoriaService {
             throw new HttpException("O ID da Categoria é inválido!", HttpStatus.BAD_REQUEST);
         }
 
+        await this.findById(categoria.id);
+
         // UPDATE tb_categorias
-        // SET tipo = ?, 
+        // SET tipo = ? 
         // WHERE id = ?;   
         return await this.categoriaRepository.save(categoria);
     }

@@ -11,7 +11,7 @@ export class Categoria {
 
     @Transform(({ value }: TransformFnParams) => value?.trim()) // Remover espaços em branco I/F
     @IsNotEmpty({ message: "O Tipo é Obrigatório" }) // Forçar digitação
-    @Length(5, 100, { message: "O Tipo deve ter entre 10 e 255 caracteres" })
+    @Length(2, 100, { message: "O Tipo deve ter entre 2 e 255 caracteres" })
     @Column({ length: 100, nullable: false }) //VARCHAR(100) NOT NULL
     tipo: string;
 

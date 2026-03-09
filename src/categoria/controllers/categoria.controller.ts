@@ -14,6 +14,15 @@ export class CategoriaController {
     @HttpCode(HttpStatus.OK)
     findAll(): Promise<Categoria[]> {
         return this.categoriaService.findAll();
+
+    }
+
+    // CONSULTA EXTRA EM CATEGORIA
+    // Retorna um INNER JOIN para exibir apenas as categorias com produtos vinculados
+    @Get("/com-produtos")
+    @HttpCode(HttpStatus.OK)
+    findAllComProdutos(): Promise<Categoria[]> {
+        return this.categoriaService.findAllComProdutos();
     }
 
     @Get("/:id")
@@ -26,14 +35,6 @@ export class CategoriaController {
     @HttpCode(HttpStatus.OK)
     findByTipo(@Param("tipo") tipo: string): Promise<Categoria[]> {
         return this.categoriaService.findAllByTipo(tipo);
-    }
-
-    // CONSULTA EXTRA EM CATEGORIA
-    // Retorna um inner join para exibir apenas as categorias com produtos vinculados
-    @Get("/com-produtos")
-    @HttpCode(HttpStatus.OK)
-    findAllComProdutos(): Promise<Categoria[]> {
-        return this.categoriaService.findAllComProdutos();
     }
 
     @Post()

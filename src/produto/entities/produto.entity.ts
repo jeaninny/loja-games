@@ -12,7 +12,7 @@ export class Produto {
 
     @Transform(({ value }: TransformFnParams) => value?.trim()) // Remover espaços em branco I/F
     @IsNotEmpty({ message: "O Nome é Obrigatório" }) // Forçar digitação
-    @Length(5, 255, { message: "O Nome deve ter entre 5 e 255 caracteres" })
+    @Length(2, 255, { message: "O Nome deve ter entre 2 e 255 caracteres" })
     @Column({ length: 255, nullable: false }) //VARCHAR(255) NOT NULL
     nome: string;
 
